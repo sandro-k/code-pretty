@@ -8,17 +8,13 @@
 
 </head>
 <body unresolved>
-
-
-
-
-
 <polymer-element name="demo-tag">
   <!-- outermost template defines the element's shadow DOM -->
   <template>
     <input value="{{numbering}}">
     <button onclick="document.querySelector('code-pretty').toggle()">collapse</button>
-    <code-pretty lang="json" numbering="{{numbering}}">
+
+    <code-pretty lang="json" text="{{test}}" numbering="{{numbering}}">
       {
       "id": "387",
       "name": "greenhouse",
@@ -37,17 +33,11 @@
       ]
       }
     </code-pretty>
-    <code-pretty lang="json" text="{{test}}">
-
-    </code-pretty>
   </template>
   <script>
     Polymer('demo-tag', {
-
-
       ready: function() {
         // populate the element’s data model
-        this.test = '{"bbbb": "aa"}';
         this.numbering = 3;
       }
     });
