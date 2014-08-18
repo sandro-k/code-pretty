@@ -1,3 +1,11 @@
+<!--
+
+The `code-pretty` element uses google-code-prettify to prettify code that is within the element or set via the `text` attribute
+
+@element code-pretty
+@homepage https://github.com/sandro-k/code-pretty
+
+-->
 <!--polymer-->
 <link rel="import" href="../polymer/polymer.html"/>
 <link rel="import" href="../core-collapse/core-collapse.html"/>
@@ -12,63 +20,7 @@
 <polymer-element name="code-pretty" attributes="lang, text, numbering, collapsed">
   <template>
     <link rel="stylesheet" href="../google-code-prettify/src/prettify.css"/>
-    <style>
-      .head {
-        direction: rtl;
-        text-transform: uppercase;
-        height: 27px;
-        position: relative;
-        cursor: pointer;
-      }
-
-      pre.prettyprint {
-        border: 0;
-        padding: 0;
-        overflow: auto;
-      }
-
-      #code {
-        margin: 0;
-      }
-
-      .wrapper {
-        border: 1px solid #888;
-        min-height: 32px;
-        background-color: whitesmoke;
-        border-radius: 4px;
-      }
-
-      .head span {
-        background: #c4ee99;
-
-        padding: 4px 8px;
-        display: inline-block;
-        border-bottom-left-radius: 5px;
-        border-left: 1px dotted #888;
-        border-bottom: 1px dotted #888;
-      }
-
-      .head span.collapsed {
-        border-bottom: 0;
-        border-bottom-left-radius: 0px;
-      }
-
-      core-collapse {
-        margin-top: -27px;
-      }
-
-      .inlinetext {
-        margin-top: -20px;
-        padding-left: 8px;
-        height: 20px;
-        font-family: monospace;
-        white-space: pre;
-        font-size: 13px;
-        color: #222222;
-        overflow: hidden;
-        display: block;
-      }
-    </style>
+    <link rel="stylesheet" href="custom.css"/>
     <div class="wrapper">
       <div class="head" on-click="{{handelopen}}">
       <span class="{{ {collapsed:collapsed } | tokenList}}">
@@ -82,8 +34,9 @@
       </span>
       </div>
       <!--host element for the source code-->
-      <core-collapse id="collapse" opened?={{!collapsed}}>
-        <pre id="code" class="prettyprint" part="code"></pre>
+      <core-collapse id="collapse" opened
+      ?={{!collapsed}}>
+      <pre id="code" class="prettyprint" part="code"></pre>
       </core-collapse>
       <template bind if="{{collapsed}}">
         <span class="inlinetext">{{inlinetext}}</span>
@@ -146,10 +99,10 @@
           this.$.code.innerHTML = PR.prettyPrintOne(this.text);
         }
 
-        if (typeof this.text == 'object'){
+        if (typeof this.text == 'object') {
 //          replace(/(\r\n|\n|\r)/gm, "");
           this.inlinetext = JSON.stringify(this.text);
-        } else if (typeof this.text == 'string'){
+        } else if (typeof this.text == 'string') {
           this.inlinetext = this.text.replace(/(\r\n|\n|\r)/gm, "");
         }
 
@@ -178,7 +131,7 @@
 
         if (typeof  string == 'object') {
           return JSON.stringify(string, null, 2);
-        } else if (typeof string == 'string'){
+        } else if (typeof string == 'string') {
           if (string.trim().length > 0) {
             return JSON.stringify(JSON.parse(string), null, 2);
           }
