@@ -98,8 +98,7 @@
         this.codeLang.json = this.parsAndFormatJson;
       },
       ready: function () {
-        var tmp = this.trim(this.textContent);
-
+        var tmp = this.trim(this.textContent).trim();
         if (tmp.length > 0) {
           this.text = tmp;
         }
@@ -125,7 +124,8 @@
 
       textChanged: function () {
         console.log("Text changed:\n %s", this.text);
-        if (this.text.trim().length <= 0) {
+
+        if (typeof this.text == "string" && this.text.trim().length <= 0) {
           return;
         }
 
