@@ -25,8 +25,8 @@
         "tests"
     ],
     "dependencies": {
-      "polymer": "Polymer/polymer#~0.5.5",
+        "polymer": "Polymer/polymer#~0.5.5",
         "google-code-prettify": "~1.0.1",
-        "core-elements": "Polymer/core-elements#~0.3.3"
+        "core-elements": "Polymer/core-elements#~0.5.5"
     }
 }
