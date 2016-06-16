@@ -160,7 +160,11 @@
           return JSON.stringify(string, null, 2);
         } else if(typeof string == 'string') {
           if(string.trim().length > 0) {
-            return JSON.stringify(JSON.parse(string), null, 2);
+            try {
+              return JSON.stringify(JSON.parse(string), null, 2);
+            } catch (err) {
+              this.error = true;
+            }
           }
         }
         return "Parsing Error";
