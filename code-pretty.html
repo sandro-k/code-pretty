@@ -47,10 +47,10 @@
       </div>
       <!--host element for the source code-->
       <core-collapse id="collapse" opened?={{!collapsed}}>
-        <pre id="code" class="prettyprint" part="code"></pre>
+        <pre id="code" class="prettyprint" part="code" style="-webkit-user-select: text"></pre>
       </core-collapse>
       <template bind if="{{collapsed}}">
-        <span class="inlinetext">{{inlinetext}}</span>
+        <span style="-webkit-user-select: text" class="inlinetext">{{inlinetext}}</span>
       </template>
     </div>
   </template>
